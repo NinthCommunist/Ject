@@ -15,11 +15,11 @@ public class BasePage {
     private final static SelenideElement advBtn = $("#tabBarItem3");
     private final static SelenideElement votingBtn = $("#tabBarItem4");
 
-    public BasePage tabBarOpenMainPage(){
+    public MainPage tabBarOpenMainPage(){
         mainBtn.shouldBe(Condition.exist)
                 .shouldBe(Condition.visible)
                 .click();
-        return this;
+        return new MainPage();
     }
 
     public BasePage tabBarOpenTvPage(){

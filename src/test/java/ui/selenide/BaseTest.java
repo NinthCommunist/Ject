@@ -5,7 +5,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import ui.selenide.pages.MainPage;
 
-import static config.Constants.*;
 
 public class BaseTest {
 
@@ -15,7 +14,7 @@ public class BaseTest {
     @BeforeTest
     public void setUp(){
         SelenideSetup.webDriverSetUp();
-        Selenide.open(UI_URL);
+        mainPage.openMainPage();
     }
 
     @AfterTest
