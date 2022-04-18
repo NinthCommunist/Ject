@@ -14,4 +14,13 @@ public class MainTest extends BaseTest{
                 .tabBarOpenMainPage()
                 .checkMainPageIsOpen();
     }
+
+    @Test(testName = "Открытие списка новостей категории")
+    public void testOpenListOfCategoryNewsFromHotNews(){
+        mainPage.openListOfHotNews()
+                .checkNewsCount()
+                .openRandomNews()
+                .openListOfRubric()
+                .checkNameOfCategory();
+    }
 }

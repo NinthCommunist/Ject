@@ -14,6 +14,7 @@ public class BasePage {
     private final static SelenideElement photosBtn = $("#tabBarItem2");
     private final static SelenideElement advBtn = $("#tabBarItem3");
     private final static SelenideElement votingBtn = $("#tabBarItem4");
+    protected Logger logger = LoggerFactory.getLogger(BasePage.class);
 
     public MainPage tabBarOpenMainPage(){
         mainBtn.shouldBe(Condition.exist)
