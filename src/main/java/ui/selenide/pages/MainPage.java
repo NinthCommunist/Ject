@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 
 import static com.codeborne.selenide.Selenide.*;
-import static config.Constants.UI_URL;
+import static config.Constants.URL;
 
 public class MainPage extends BasePage {
 
@@ -20,7 +20,7 @@ public class MainPage extends BasePage {
 
 
   public MainPage openMainPage(){
-      open(UI_URL);
+      open(URL);
       return this;
   }
 

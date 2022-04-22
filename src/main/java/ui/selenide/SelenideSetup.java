@@ -12,7 +12,7 @@ public class SelenideSetup {
         Configuration.browser="chrome";
         Configuration.browserSize="1920x1080";
         Configuration.headless=false;
-        Configuration.timeout=UI_TIMEOUT;
+        Configuration.timeout=10000;
     }
 
 }
