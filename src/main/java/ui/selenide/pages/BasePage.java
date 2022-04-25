@@ -2,6 +2,7 @@ package ui.selenide.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,35 +17,40 @@ public class BasePage {
     private final static SelenideElement votingBtn = $("#tabBarItem4");
     protected Logger logger = LoggerFactory.getLogger(BasePage.class);
 
-    public MainPage tabBarOpenMainPage(){
+    @Step(value = "Переход на главный экран")
+    public MainPage tabBarOpenMainPage() {
         mainBtn.shouldBe(Condition.exist)
                 .shouldBe(Condition.visible)
                 .click();
         return new MainPage();
     }
 
-    public BasePage tabBarOpenTvPage(){
+    @Step(value = "Переход на страницу ТВ")
+    public BasePage tabBarOpenTvPage() {
         tvBtn.shouldBe(Condition.exist)
                 .shouldBe(Condition.visible)
                 .click();
         return this;
     }
 
-    public BasePage tabBarOpenPhotosPage(){
+    @Step(value = "Переход на страницу фото")
+    public BasePage tabBarOpenPhotosPage() {
         photosBtn.shouldBe(Condition.exist)
                 .shouldBe(Condition.visible)
                 .click();
         return this;
     }
 
-    public BasePage tabBarOpenAdvPage(){
+    @Step(value = "Переход на страницу рекламы")
+    public BasePage tabBarOpenAdvPage() {
         advBtn.shouldBe(Condition.exist)
                 .shouldBe(Condition.visible)
                 .click();
         return this;
     }
 
-    public BasePage tabBarOpenVotingPage(){
+    @Step(value = "Переход на страницу голосования")
+    public BasePage tabBarOpenVotingPage() {
         votingBtn.shouldBe(Condition.exist)
                 .shouldBe(Condition.visible)
                 .click();

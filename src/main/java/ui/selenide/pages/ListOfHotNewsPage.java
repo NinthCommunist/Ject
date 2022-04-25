@@ -3,6 +3,7 @@ package ui.selenide.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.util.Random;
@@ -18,7 +19,7 @@ public class ListOfHotNewsPage extends BasePage{
         return this;
     }
 
-
+    @Step(value = "Открытие случайной новости")
     public ArticlePage openRandomNews(){
         listOfNews.get(new Random().nextInt(16))
                 .shouldBe(Condition.visible)

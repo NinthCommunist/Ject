@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="UI Tests">
+    <test verbose="2"  name="ALL UI Tests">
+        <classes>
+            <class name="ui.selenide.MainTest"/>
+            <class name="ui.selenide.TabBarTest"/>
+        </classes>
+    </test>
+</suite>

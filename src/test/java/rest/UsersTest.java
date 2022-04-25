@@ -23,13 +23,13 @@ public class UsersTest {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
-    @Test
+    @Test(testName = "Проверка количества пользователей при запросе списка")
     public void usersListTest() {
         ListUsersData listUsersData = userStep.getUsersList("2");
         Assert.assertTrue(listUsersData.getUserData().size() == listUsersData.getPerPage());
     }
 
-    @Test
+    @Test(testName = "Проверка соответсвия урла аватара с айди пользователя")
     public void comparisonAvatarAndIdForEvenUser() {
         ListUsersData listUsersData = userStep.getUsersList("2");
         List<UserData> users = listUsersData.getUserData();
@@ -37,19 +37,19 @@ public class UsersTest {
         evenUsers.forEach(x->Assert.assertTrue(x.getAvatarUrl().contains(String.valueOf(x.getId()))));
     }
 
-    @Test
+    @Test(testName = "Создание пользователя через json файл ")
     public void createUserWithJsonFile() {
         CUDUserData cudUser = userStep.createUserWithJsonFile("createUser", 201);
-        System.out.println(cudUser.getName());
     }
 
-    @Test
+
+    @Test(testName = "Создание случайного пользователя")
     public void createUserWithRandomUser() {
         CreateUserData createUser = UserCreater.getRandomCreateUser();
         userStep.createUserWithPojo(createUser, 201);
     }
 
-    @Test
+    @Test(testName = "Создание пользователя через билдер")
     public void createUserWithUserBuilder() {
         CreateUserData createUser = CreateUserData.builder()
                 .name("Steve")
@@ -57,5 +57,4 @@ public class UsersTest {
                 .build();
         userStep.createUserWithPojo(createUser, 201);
     }
-
 }
