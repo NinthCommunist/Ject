@@ -3,9 +3,12 @@ package rest.steps;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import rest.PojoClasses.CUDUserData;
+import rest.PojoClasses.CreateUserData;
 import rest.PojoClasses.ListUsersData;
 import rest.PojoClasses.UserData;
 import rest.RestSpecInstall;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import java.util.Map;
 
@@ -33,10 +36,17 @@ public class UserStep {
         return getUserFromId(userId, 200);
     }
 
-    public CUDUserData createUser(String jsonName, Integer statusCode){
+    public CUDUserData createUserWithJsonFile(String jsonName, Integer statusCode){
         return RestAssured.given(RestSpecInstall.postReqSpec(path, jsonName), RestSpecInstall.resSpec(statusCode))
                 .post().then().log().all().extract().body().as(CUDUserData.class);
     }
+
+    public CUDUserData createUserWithPojo(CreateUserData user, Integer statusCode){
+        return RestAssured.given(RestSpecInstall.createReqSpec(path).body(user).log().all(), RestSpecInstall.resSpec(statusCode))
+                .post().then().log().all().extract().body().as(CUDUserData.class);
+    }
+
+
 
 
 }

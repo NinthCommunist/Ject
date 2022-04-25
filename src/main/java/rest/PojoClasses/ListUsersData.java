@@ -10,6 +10,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ListUsersData {
     int pages;
+    @JsonProperty("per_page")
+    int perPage;
     @JsonProperty("data")
     List<UserData> userData;
 }
