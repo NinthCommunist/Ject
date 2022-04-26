@@ -16,7 +16,7 @@ public class ListOfCategoryNewsPage extends BasePage{
     @Step(value = "Проверка соответсвия категории")
     public ListOfCategoryNewsPage checkNameOfCategory(){
         logger.debug(categoryName);
-        Assert.assertFalse(Objects.requireNonNull(Selenide.title().toUpperCase()).contains(categoryName));
+        Assert.assertTrue(!Objects.requireNonNull(Selenide.title().toUpperCase()).contains(categoryName));
         return this;
     }
 }
