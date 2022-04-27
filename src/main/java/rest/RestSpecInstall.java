@@ -1,8 +1,10 @@
 package rest;
 
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -19,11 +21,13 @@ public class RestSpecInstall {
    public static RequestSpecification createReqSpec(String path){
        return new RequestSpecBuilder()
                .setBaseUri(URL)
+               .addFilter(new AllureRestAssured())
                .setBasePath(path)
                .build();
     }
     public static RequestSpecification createReqSpecParams(String path, Map<String, String> params ){
         return new RequestSpecBuilder()
+                .addFilter(new AllureRestAssured())
                 .setBasePath(path)
                 .setBaseUri(URL)
                 .addQueryParams(params)
@@ -32,6 +36,7 @@ public class RestSpecInstall {
 
     public static RequestSpecification postReqSpec(String path, String jsonFileName){
         return new RequestSpecBuilder()
+                .addFilter(new AllureRestAssured())
                 .setBaseUri(URL)
                 .setBasePath(path)
                 .setBody(stringFromFileName(jsonFileName))
