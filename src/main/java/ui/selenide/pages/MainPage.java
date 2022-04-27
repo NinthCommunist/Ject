@@ -17,6 +17,7 @@ public class MainPage extends BasePage {
 
   private final static SelenideElement mainNewsBtn = $x("//*[text()='Главная новость']");
   private final static SelenideElement hotNewsBtn = $x("//*[text()='Горячие новости']");
+  private final static SelenideElement failedElement = $x("//btn[@class = 'notExist']");
 
 
   @Step(value = "Открытие главной страницы")
@@ -38,6 +39,13 @@ public class MainPage extends BasePage {
       Assert.assertEquals(title(), "Алга (Вперед)");
       return this;
   }
+
+    @Step(value = "Специально упавший шаг проверки открытия главной страницы")
+    public MainPage failedCheckMainPageIsOpen(){
+        failedElement.shouldBe(Condition.exist)
+                .click();
+        return this;
+    }
 
     @Step(value = "Открытие списка горячих новостей")
   public ListOfHotNewsPage openListOfHotNews(){

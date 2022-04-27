@@ -11,7 +11,6 @@ public class ArticlePage extends BasePage {
     private static final String rubricNameStr = rubricName.getText();
     public ListOfCategoryNewsPage openListOfRubric(){
 
-        logger.debug("Rubric name - " + rubricNameStr);
         rubricName.shouldBe(Condition.visible)
                 .shouldBe(Condition.exist)
                 .click();

@@ -1,5 +1,6 @@
 package ui.selenide;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TabBarTest extends BaseTest {
@@ -12,5 +13,10 @@ public class TabBarTest extends BaseTest {
                 .tabBarOpenVotingPage()
                 .tabBarOpenMainPage()
                 .checkMainPageIsOpen();
+    }
+
+    @Test(description = "Специально упавший тест для проверки показания скриншота")
+    public void failedTest(){
+        mainPage.failedCheckMainPageIsOpen();
     }
 }

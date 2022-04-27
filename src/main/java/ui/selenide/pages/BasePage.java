@@ -2,6 +2,7 @@ package ui.selenide.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,6 @@ public class BasePage {
     private final static SelenideElement photosBtn = $("#tabBarItem2");
     private final static SelenideElement advBtn = $("#tabBarItem3");
     private final static SelenideElement votingBtn = $("#tabBarItem4");
-    protected Logger logger = LoggerFactory.getLogger(BasePage.class);
 
     @Step(value = "Переход на главный экран")
     public MainPage tabBarOpenMainPage() {

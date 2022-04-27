@@ -25,7 +25,6 @@ public class ListOfHotNewsPage extends BasePage{
                 .shouldBe(Condition.visible)
                 .shouldBe(Condition.exist)
                 .click();
-        logger.debug("Open page - " + Selenide.title());
         return new ArticlePage();
     }
 }

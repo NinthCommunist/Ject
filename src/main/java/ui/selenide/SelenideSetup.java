@@ -13,7 +13,6 @@ public class SelenideSetup {
         WebDriverManager.chromedriver().setup();
         Configuration.browser="chrome";
         Configuration.browserSize="1920x1080";
-        Configuration.headless=true;
         Configuration.timeout=10000;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
