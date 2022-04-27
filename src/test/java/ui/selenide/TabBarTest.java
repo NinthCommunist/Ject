@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class TabBarTest extends BaseTest {
 
-    @Test
+    @Test(description = "Проверка переходам по страницам таб бара")
     public void choicesTabBars(){
         mainPage.tabBarOpenTvPage()
                 .tabBarOpenPhotosPage()

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class MainTest extends BaseTest{
 
 
-    @Test(testName = "Открытие главной новости через список новостей")
+    @Test(description = "Открытие главной новости через список новостей")
     public void testOpenArticleFromListOfMainNews(){
         mainPage.openListOfMainNews()
                 .checkNewsCount()
@@ -15,7 +15,7 @@ public class MainTest extends BaseTest{
                 .checkMainPageIsOpen();
     }
 
-    @Test(testName = "Открытие списка новостей категории")
+    @Test(description = "Открытие списка новостей категории")
     public void testOpenListOfCategoryNewsFromHotNews(){
         mainPage.openListOfHotNews()
                 .checkNewsCount()

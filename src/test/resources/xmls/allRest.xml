@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All REST Tests">
-    <test verbose="2" name="ALL Rest Test">
+<suite name="Все REST тесты">
+    <test verbose="2" name="Все REST тесты">
         <classes>
             <class name="rest.UsersTest"/>
         </classes>
