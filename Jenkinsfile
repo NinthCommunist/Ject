@@ -25,16 +25,13 @@ pipeline {
              stage('Run tests') {
                      steps {
                            script {
-                           echo "blablalba4"
-                       	     docker.image('aerokube/selenoid:1.10.4 -p 4444:4444' )
-                       	     echo "blablalba56"
-                           	docker.image('test'){
-                           	echo "blablalba5"
-                                 	sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
+                                docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444 -v /run/docker.sock:/var/run/docker.sock -v $PWD:/etc/selenoid/',
+                                       	'-timeout 600s -limit 2') { c ->
+                                        docker.image('test').inside("--link ${c.id}:selenoid")
                              	    }
                                 }
                    	    }
-
+               }
              }
              stage('Reports') {
                      steps {
