@@ -9,6 +9,7 @@ pipeline {
             stage('Build image') {
                 steps {
                         script {
+                        sh "echo before image build"
                       	      docker.build("test","-f Dockerfile .")
                       	      sh "echo image build end"
                           }
