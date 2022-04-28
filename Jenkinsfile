@@ -8,20 +8,18 @@ pipeline {
      stages {
             stage('Build image') {
                 steps {
-                    catchError {
-                          	   script {
-                            	      sh "docker build -t test -f Dockerfile"
-                          	     }
-                              }
+                        script {
+                      	      sh "docker build -t test -f Dockerfile"
+                      	      sh "echo "
+                          }
+
                 }
             }
              stage('Pull browser') {
                     steps {
-                       catchError {
                           script {
                   	    docker.image('selenoid/chrome:92.0')
                   	      }
-                       }
                     }
              }
              stage('Run tests') {
