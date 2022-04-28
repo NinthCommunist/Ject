@@ -24,7 +24,6 @@ pipeline {
              stage('Run tests') {
                      steps {
                            script {
-                               sh "docker pull aerokube/selenoid:1.10.4"
                                sh "docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 4444:4444 aerokube/selenoid:1.10.4"
                                sh "docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 4444:4444 test"
                                sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
