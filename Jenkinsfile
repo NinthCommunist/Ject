@@ -10,6 +10,7 @@ pipeline {
                 steps {
                         script {
                       	      docker.build("test","-f Dockerfile .")
+                      	      sh "echo image build end"
                           }
 
                 }
@@ -18,6 +19,7 @@ pipeline {
                     steps {
                           script {
                   	    docker.image('selenoid/chrome:99.0')
+                  	    sh "echo pull browser end"
                   	      }
                     }
              }
