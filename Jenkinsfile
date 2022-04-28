@@ -25,6 +25,7 @@ pipeline {
                      steps {
                            script {
                                 docker.image('aerokube/selenoid:1.10.4')
+                                docker.image('test')
                                 sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
                                 }
                    	    }
