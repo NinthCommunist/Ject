@@ -17,7 +17,7 @@ pipeline {
              stage('Pull browser') {
                     steps {
                           script {
-                  	      docker.image('selenoid/chrome:99.0')
+                  	      sh "docker pull selenoid/chrome"
                   	      }
                     }
              }
@@ -25,7 +25,7 @@ pipeline {
                      steps {
                            script {
                                sh "docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 4444:4444 aerokube/selenoid:1.10.4"
-                               sh "docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 4444:4444 test"
+                               sh "docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p test"
                                sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
                                 }
                    	    }
