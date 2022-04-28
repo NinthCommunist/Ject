@@ -15,8 +15,7 @@ public class BaseTest {
 
     @BeforeTest
     public void setUp(){
-        SelenideSetup.webDriverSetUp();
-
+        SelenideSetup.selenoidSetUp();
         mainPage.openMainPage();
     }
 
