@@ -1,9 +1,9 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'typeTest', choices: ['rest', 'ui'], description: 'Какой вид тестирования будет')
+        choice(name: 'typeTest', choices: ['rest', 'ui'], description: 'REST or UI')
 
-        choice(name: 'xml', choices: ['allRest', 'allUI', 'mainUI', 'randUsRest'], description: 'Какой xml файл используем')
+        choice(name: 'xml', choices: ['allRest', 'allUI', 'mainUI', 'randUsRest'], description: 'Which XML')
     }
      stages {
             stage('Build image') {
@@ -17,7 +17,7 @@ pipeline {
              stage('Pull browser') {
                     steps {
                           script {
-                  	    docker.image('selenoid/chrome:92.0')
+                  	    docker.image('selenoid/chrome:99.0')
                   	      }
                     }
              }
