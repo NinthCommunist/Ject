@@ -27,7 +27,7 @@ pipeline {
                            script {
                            echo "blablalba4"
                        	     docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444') { c ->
-                           	docker.image('test').inside("--link ${c.id}:selenoid") {
+                           	docker.image('test').inside() {
                            	echo "blablalba5"
                                  	sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
                              	    }
