@@ -26,7 +26,7 @@ pipeline {
                      steps {
                            script {
                            echo "blablalba4"
-                       	     docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444')
+                       	     docker.image('aerokube/selenoid:1.10.4 -p 4444:4444' )
                        	     echo "blablalba56"
                            	docker.image('test'){
                            	echo "blablalba5"
