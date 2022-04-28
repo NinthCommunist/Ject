@@ -9,7 +9,6 @@ pipeline {
             stage('Build image') {
                 steps {
                         script {
-                        echo "blablalba"
                       	      docker.build("test","-f Dockerfile .")
                           }
 
@@ -18,7 +17,6 @@ pipeline {
              stage('Pull browser') {
                     steps {
                           script {
-                          echo "blablalba2"
                   	      docker.image('selenoid/chrome:99.0')
                   	      echo "blablalba3"
                   	      }
@@ -27,8 +25,10 @@ pipeline {
              stage('Run tests') {
                      steps {
                            script {
+                           echo "blablalba4"
                        	     docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444') { c ->
                            	docker.image('test').inside("--link ${c.id}:selenoid") {
+                           	echo "blablalba5"
                                  	sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
                              	    }
                                 }
