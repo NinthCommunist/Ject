@@ -25,8 +25,8 @@ pipeline {
                      steps {
                         catchError {
                            script {
-                           sh "ls"
-                       	     docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444 -v /run/docker.sock:/var/run/docker.sock -v .:/etc/selenoid/',
+                           sh "dir"
+                       	     docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444 -v /run/docker.sock:/var/run/docker.sock -v :/etc/selenoid/',
                          	'-timeout 600s -limit 2') { c ->
                            	docker.image('test').inside("--link ${c.id}:selenoid") {
                                  	sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
