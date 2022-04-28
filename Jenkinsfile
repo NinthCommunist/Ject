@@ -23,15 +23,11 @@ pipeline {
              }
              stage('Run tests') {
                      steps {
-                        catchError {
                            script {
-                       	     docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444') { c ->
-                           	docker.image('test').inside("--link ${c.id}:selenoid") {
-                                 	sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
-                             	    }
-                                }
-                     	     }
-                   	    }
+                       	     docker.image('aerokube/selenoid:1.10.4').withRun('-p 4444:4444')
+                       	      docker.image('test').inside("--link ${c.id}:selenoid")
+                       	      sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
+                             }
                }
              }
              stage('Reports') {
