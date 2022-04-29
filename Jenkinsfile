@@ -11,8 +11,8 @@ pipeline {
                         bat 'cd src/test/resources/selenoid'
                         echo 'een'
                         bat 'dir'
-                		bat "./cm_win64 selenoid start --browsers 'chrome:99.0'"
-                		bat './cm_win64 selenoid status'
+                		bat "src/test/resources/selenoid_manager/cm_win64 selenoid start --browsers 'chrome:99.0'"
+                		bat 'src/test/resources/selenoid_manager/cm_win64 selenoid status'
                 		bat 'curl http://localhost:4444/status'
                          }
             }
