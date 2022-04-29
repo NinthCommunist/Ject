@@ -7,7 +7,7 @@ pipeline {
             stage('start Selenoid') {
                 steps {
                         bat 'docker pull selenoid/chrome'
-                		bat "cm.exe selenoid start"
+                		bat "selenoid start --browsers-json browsers.json"
                 		bat 'cm.exe selenoid status'
                 		bat 'curl http://localhost:4444/status'
                          }
@@ -21,8 +21,8 @@ pipeline {
       post {
              always {
                  script {
-                     sh 'docker stop selenoid'
-                     sh 'docker rm selenoid'
+                     bat 'docker stop selenoid'
+                     bat 'docker rm selenoid'
                      allure([
                          includeProperties: false,
                          jdk: '',
