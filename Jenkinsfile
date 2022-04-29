@@ -1,47 +1,37 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'typeTest', choices: ['rest', 'ui'], description: 'REST or UI')
-
-        choice(name: 'xml', choices: ['allRest', 'allUI', 'mainUI', 'randUsRest'], description: 'Which XML')
+        choice(name: 'xml', choices: ['allUI', 'mainUI'], description: 'Which XML')
     }
      stages {
-            stage('Build image') {
+            stage('start Selenoid') {
                 steps {
-                        script {
-                      	      docker.build("test","-f Dockerfile .")
-                          }
-
-                }
+                        sh 'docker pull selenoid/chrome'
+                		sh 'src/test/resources/selenoid/cm_win64 selenoid start'
+                		sh 'src/test/resources/selenoid/cm_win64 selenoid status'
+                		sh 'curl http://localhost:4444/status'
+                         }
             }
-             stage('Pull browser') {
-                    steps {
-                          script {
-                  	      sh "docker pull selenoid/chrome"
-                  	      }
-                    }
+            stage('test') {
+                        steps {
+            		        sh 'mvn clean test -DtestType=ui -Dxml=${params.xml}'
+                        }
+            }
+     }
+      post {
+             always {
+                 script {
+                     sh 'docker stop selenoid'
+                     sh 'docker rm selenoid'
+                     allure([
+                         includeProperties: false,
+                         jdk: '',
+                         properties: [],
+                         reportBuildPolicy: 'ALWAYS',
+                         results: [[path: 'target/allure-results']]
+                         ])
+                 }
              }
-             stage('Run tests') {
-                     steps {
-                           script {
-                               sh "docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 4444:4444 aerokube/selenoid:1.10.4"
-                               sh "docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p test"
-                               sh "mvn clean test -DtestType=${params.typeTest} -Dxml=${params.xml}"
-                                }
-                   	    }
+         }
 
-             }
-             stage('Reports') {
-                     steps {
-                        allure([
-                   	   includeProperties: false,
-                   	   jdk: '',
-                   	   properties: [],
-                   	   reportBuildPolicy: 'ALWAYS',
-                   	   results: [[path: 'target/report']]
-                 	   ])
-               	        }
-
-             }
-      }
 }
