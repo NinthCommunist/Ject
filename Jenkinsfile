@@ -9,7 +9,6 @@ pipeline {
                         bat 'docker pull selenoid/chrome'
                 		bat 'cm.exe selenoid start --config-dir "/test" --force --browsers-json "browsers.json"'
                 		bat 'cm.exe selenoid status'
-                		bat 'curl http://localhost:4444/status'
                          }
             }
             stage('test') {
