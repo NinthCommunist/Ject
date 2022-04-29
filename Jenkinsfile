@@ -8,8 +8,8 @@ pipeline {
                 steps {
                         bat 'docker pull selenoid/chrome:99.0'
                         bat 'cd src/test/resources/selenoid'
-                		bat "src/test/resources/selenoid_manager/cm_win64.exe selenoid start --browsers 'chrome:99.0'"
-                		bat 'src/test/resources/selenoid_manager/cm_win64.exe selenoid status'
+                		bat "cm_win64.exe selenoid start --browsers 'chrome:99.0'"
+                		bat 'cm_win64.exe selenoid status'
                 		bat 'curl http://localhost:4444/status'
                          }
             }
