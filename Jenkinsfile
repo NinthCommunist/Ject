@@ -7,15 +7,15 @@ pipeline {
             stage('start Selenoid') {
                 steps {
                         echo "echo1"
-                        sh 'docker pull selenoid/chrome'
-                		sh "src/test/resources/selenoid/cm_win64 selenoid start --browsers 'chrome:99.0'"
-                		sh 'src/test/resources/selenoid/cm_win64 selenoid status'
-                		sh 'curl http://localhost:4444/status'
+                        bat 'docker pull selenoid/chrome'
+                		bat "src/test/resources/selenoid/cm_win64 selenoid start --browsers 'chrome:99.0'"
+                		bat 'src/test/resources/selenoid/cm_win64 selenoid status'
+                		bat 'curl http://localhost:4444/status'
                          }
             }
             stage('test') {
                         steps {
-            		        sh 'mvn clean test -DtestType=ui -Dxml=${params.xml}'
+            		        bat 'mvn clean test -DtestType=ui -Dxml=${params.xml}'
                         }
             }
      }
