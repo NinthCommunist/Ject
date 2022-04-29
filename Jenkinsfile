@@ -7,8 +7,8 @@ pipeline {
             stage('start Selenoid') {
                 steps {
                         bat 'docker pull selenoid/chrome:99.0'
-                		bat "cm.exe selenoid start --browsers 'chrome:99.0'"
-                		bat 'cm.exe selenoid status'
+                		bat "src/test/resources/selenoid/cm.exe selenoid start"
+                		bat 'src/test/resources/selenoid/cm.exe selenoid status'
                 		bat 'curl http://localhost:4444/status'
                          }
             }
