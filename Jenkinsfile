@@ -13,7 +13,7 @@ pipeline {
             }
             stage('test') {
                         steps {
-            		        bat 'mvn clean test -DtestType=ui -Dxml=${parameters.xml}'
+            		        bat 'mvn clean test -DtestType=ui -Dxml=allUI'
                         }
             }
      }
