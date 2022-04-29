@@ -6,6 +6,7 @@ pipeline {
      stages {
             stage('start Selenoid') {
                 steps {
+                        echo "echo1"
                         sh 'docker pull selenoid/chrome'
                 		sh "src/test/resources/selenoid/cm_win64 selenoid start --browsers 'chrome:99.0'"
                 		sh 'src/test/resources/selenoid/cm_win64 selenoid status'
