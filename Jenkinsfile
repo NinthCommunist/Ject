@@ -7,14 +7,14 @@ pipeline {
             stage('start Selenoid') {
                 steps {
                         bat 'docker pull selenoid/chrome'
-                		bat 'cm.exe selenoid start --config-dir "/test"'
+                		bat 'cm.exe selenoid start --config-dir "/test" --force --browsers-json "browsers.json"'
                 		bat 'cm.exe selenoid status'
+                		bat 'curl http://localhost:4444/status'
                          }
             }
             stage('test') {
                         steps {
-                            echo'${parameters.xml}'
-                            echo'${xml}'
+                            echo'${params.xml}'
             		        bat 'mvn clean test -DtestType=ui -Dxml=allUI'
                         }
             }
