@@ -26,16 +26,10 @@ public class SelenideSetup {
     }
 
     public static void selenoidSetUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
-        options.setBrowserVersion("99.0");
-        try {
-            WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"),options);
-            driver.manage().window().setSize(new Dimension(1920, 1080));
-            setWebDriver(driver);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
+        Configuration.browserVersion="99.0";
+        Configuration.remote="http://localhost:4444";
     }
 
 }
