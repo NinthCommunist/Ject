@@ -1,9 +1,9 @@
 {
   "chrome": {
-    "default": "99.0",
+    "default": "100.0",
     "versions": {
-      "99.0": {
-        "image": "selenoid/chrome:99.0",
+      "100.0": {
+        "image": "selenoid/chrome:100.0",
         "port": "4444",
         "path": "/"
       }
