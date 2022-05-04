@@ -10,10 +10,7 @@ pipeline {
                         powershell '$current = $PWD -replace "\", "/" -replace "C", "c"'
                         powershell 'docker pull aerokube/selenoid:latest-release'
                         powershell 'docker pull selenoid/chrome:99.0'
-                        echo 'bla1'
-                        powershell '$PWD'
-                        echo 'bla2'
-                        powershell 'docker run -d --name selenoid -p 4444:4444 -conf /etc/selenoid/browsers.json  -v //var/run/docker.sock:/var/run/docker.sock -v :/etc/selenoid/:ro aerokube/selenoid:latest-release'
+                        powershell 'docker run -d --name selenoid -p 4444:4444 -v //var/run/docker.sock:/var/run/docker.sock -v ${current}:/etc/selenoid/:ro aerokube/selenoid:latest-release'
                         powershell 'curl http://localhost:4444/status'
                         powershell 'ls'
                          }
