@@ -33,6 +33,7 @@ public class SelenideSetup {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         Configuration.browserCapabilities=capabilities;
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
 }
