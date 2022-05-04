@@ -29,7 +29,6 @@ public class SelenideSetup {
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
         options.setBrowserVersion("99.0");
-        options.setCapability("enableVNC", true);
         try {
             WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"),options);
             driver.manage().window().setSize(new Dimension(1920, 1080));
