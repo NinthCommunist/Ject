@@ -14,7 +14,7 @@ pipeline {
             }
             stage('test') {
                         steps {
-            		        bat 'mvn clean test -DtestType=ui -Dxml=${params.xml} -Dselenoid=true'
+            		        bat 'mvn clean test -DtestType=ui -Dxml=${xml} -Dselenoid=true'
                         }
             }
      }
