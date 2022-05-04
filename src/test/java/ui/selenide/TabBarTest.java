@@ -15,7 +15,7 @@ public class TabBarTest extends BaseTest {
                 .checkMainPageIsOpen();
     }
 
-    ///@Test(description = "Специально упавший тест для проверки показания скриншота")
+    @Test(description = "Специально упавший тест для проверки показания скриншота")
     public void failedTest(){
         mainPage.failedCheckMainPageIsOpen();
     }
