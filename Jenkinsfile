@@ -15,6 +15,7 @@ pipeline {
             stage('test') {
                         steps {
                         echo '${parameters.xml}'
+                        echo "${params.xml}"
                         echo '$parameters.xml'
                         echo '$xml'
                         echo '${xml}'
