@@ -14,20 +14,15 @@ pipeline {
             }
             stage('test') {
                         steps {
-                        echo '${parameters.xml}'
-                        echo "${params.xml}"
-                        echo '$parameters.xml'
-                        echo '$xml'
-                        echo '${xml}'
-            		        bat 'mvn clean test -DtestType=ui -Dxml=${xml} -Dselenoid=true'
+                                bat "mvn clean test -DtestType=ui -Dxml=${params.xml} -Dselenoid=true"
                         }
             }
      }
       post {
              always {
                  script {
-                     bat 'docker stop selenoid'
-                     bat 'docker rm selenoid'
+                     powershell 'docker stop selenoid'
+                     powershell 'docker rm selenoid'
                      allure([
                          includeProperties: false,
                          jdk: '',
