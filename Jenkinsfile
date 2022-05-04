@@ -13,7 +13,7 @@ pipeline {
                         echo 'bla1'
                         powershell '$PWD'
                         echo 'bla2'
-                        powershell 'docker run -d --name selenoid -p 4444:4444 -v //var/run/docker.sock:/var/run/docker.sock -v ./:/etc/selenoid/:ro aerokube/selenoid:latest-release'
+                        powershell 'docker run -d --name selenoid -p 4444:4444 -v //var/run/docker.sock:/var/run/docker.sock -v :/etc/selenoid/:ro aerokube/selenoid:latest-release'
                         powershell 'curl http://localhost:4444/status'
                         powershell 'ls'
                          }
