@@ -6,9 +6,7 @@ pipeline {
      stages {
             stage('start Selenoid') {
                 steps {
-                        powershell 'docker pull selenoid/chrome:99.0'
-                		powershell '$PWD'
-                		powershell 'docker run -d --name selenoid -p 4444:4444 -v //var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/etc/selenoid/:ro aerokube/selenoid:latest-release'
+                        powershell 'cm.exe selenoid start --vnc'
                 		powershell 'curl http://localhost:4444/status'
                          }
             }
