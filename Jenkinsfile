@@ -7,7 +7,7 @@ pipeline {
             stage('start Selenoid') {
                 steps {
                         powershell 'docker pull selenoid/chrome:99.0'
-                		powershell '$current = $PWD -replace "\", "/" -replace "C", "c"'
+                		powershell '$current = $PWD -replace "\\", "/" -replace "C", "c"'
                 		echo 'blblblblblb'
                 		echo '$current'
                 		powershell '$PWD'
