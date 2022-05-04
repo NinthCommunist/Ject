@@ -30,9 +30,6 @@ public class SelenideSetup {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 10000;
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        Configuration.browserCapabilities=capabilities;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
