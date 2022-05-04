@@ -7,6 +7,7 @@ pipeline {
             stage('start Selenoid') {
                 steps {
                         powershell 'docker pull aerokube/selenoid:latest-release'
+                        powershell 'docker pull selenoid/chrome:99.0' //в мануале указано, что нужно сделать пул, но и без этого работает(после удаление образа)
                         powershell 'docker run -d --name selenoid -p 4444:4444 -v //var/run/docker.sock:/var/run/docker.sock -v ${PWD}\\src\\test\\resources\\selenoid:/etc/selenoid/:ro aerokube/selenoid:latest-release'
                         bat 'curl http://localhost:4444/status'
                          }
