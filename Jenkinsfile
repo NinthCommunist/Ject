@@ -7,10 +7,13 @@ pipeline {
             stage('start Selenoid') {
                 steps {
                         powershell 'ls'
-                        powershell '$PWD'
-                        powershell 'docker pull aerokube/selenoid:latest-release'
-                        powershell 'docker pull selenoid/chrome:99.0'
-                        powershell 'docker run -d --name selenoid -p 4444:4444 -v //var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/etc/selenoid/:ro aerokube/selenoid:latest-release'
+                        powershell '$current = $PWD -replace "\", "/" -replace "C", "c"'
+                        powershell 'docker run -d                                         `
+                                    --name selenoid                                         `
+                                    -p 4444:4444                                            `
+                                    -v //var/run/docker.sock:/var/run/docker.sock           `
+                                    -v ${current}/config/:/etc/selenoid/:ro                 `
+                                    aerokube/selenoid:latest-release'
                 		powershell 'curl http://localhost:4444/status'
                          }
             }
