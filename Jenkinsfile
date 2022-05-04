@@ -6,7 +6,7 @@ pipeline {
      stages {
             stage('start Selenoid') {
                 steps {
-                        powershell 'cm.exe selenoid start --vnc'
+                        powershell 'cm selenoid start --vnc'
                 		powershell 'curl http://localhost:4444/status'
                          }
             }
