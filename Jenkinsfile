@@ -8,6 +8,7 @@ pipeline {
                 steps {
                         powershell 'docker pull selenoid/chrome:99.0'
                 		powershell '$current = $PWD -replace "\", "/" -replace "C", "c"'
+                		powershell '$current'
                 		powershell 'docker run -d --name selenoid -p 4444:4444 -v //var/run/docker.sock:/var/run/docker.sock -v ${current}:/etc/selenoid/:ro aerokube/selenoid:latest-release'
                 		powershell 'curl http://localhost:4444/status'
                          }
