@@ -26,10 +26,13 @@ public class SelenideSetup {
     }
 
     public static void selenoidSetUp() {
+        Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
-        Configuration.browserVersion="99.0";
-        Configuration.remote="http://localhost:4444";
+        Configuration.timeout = 10000;
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        Configuration.browserCapabilities=capabilities;
     }
 
 }
