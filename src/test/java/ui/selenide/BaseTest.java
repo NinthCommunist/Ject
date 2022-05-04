@@ -15,7 +15,13 @@ public class BaseTest {
 
     @BeforeTest
     public void setUp(){
-        SelenideSetup.selenoidSetUp();
+        boolean selenoid = Boolean.parseBoolean("${selenoid}");
+        if (selenoid) {
+            SelenideSetup.selenoidSetUp();
+        } else {
+            SelenideSetup.webDriverSetUp();
+        }
+
         mainPage.openMainPage();
     }
 
