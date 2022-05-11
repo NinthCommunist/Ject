@@ -29,7 +29,7 @@ public class UsersTest {
         Assert.assertTrue(listUsersData.getUserData().size() == listUsersData.getPerPage());
     }
 
-    @Test(description = "Проверка соответсвия урла аватара с айди пользователя")
+    @Test(description = "Проверка соответсвия урла аватара с айди пользователя у четного пользователя")
     public void comparisonAvatarAndIdForEvenUser() {
         ListUsersData listUsersData = userStep.getUsersList("2");
         List<UserData> users = listUsersData.getUserData();
